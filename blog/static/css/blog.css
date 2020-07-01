@@ -8,15 +8,11 @@
     color: #FFFFF0;
     font-size: 36pt;
     text-decoration: none;
+    font-family: "Lemonada";
 }
 
 .content {
     margin-left: 40px;
-}
-
-
-h1, h2, h3, h4 {
-    font-family: 'Lemonada', cursive;
 }
 
 .date {
@@ -51,4 +47,8 @@ h1, h2, h3, h4 {
 }
 .post p {
     margin-left:10px;
+}
+
+.btn {
+    float: right;
 }
