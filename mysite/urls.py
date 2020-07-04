@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     # blog 애플리케이션에서 메인 urls.py로 url을 가져오기
+    path('accounts/login/', views.login, name='login'),
+    path('accounts/logout/', views.logout, name='logout', kwargs={'next_page':'/'}),
+
 ]

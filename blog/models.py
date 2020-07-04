@@ -20,8 +20,26 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def approve_comment(self):
+        return self.comments.filter(approved_comment=True)
+
 # 모델을 만들고 데이터베이스에 추가하기
 # -> python manage.py makemigrations blog(어플 이름)
 # : migration file 만들기
 # -> python manage.py migrate blog
 # : 실제로 추가시키기
+
+class Comment(models.Model):
+    post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
+
